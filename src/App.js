@@ -5,6 +5,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import Header from './components/header/header-component';
 import { auth, createUser } from './firebase/firebase.utils';
+import CheckoutPage from './pages/checkout/checkout.component';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
@@ -42,8 +43,9 @@ class App extends React.Component {
       <div>
         <Header />
         <Routes>
-          <Route path='/' element={<HomePage />}></Route>
-          <Route path='/shop' element={<ShopPage />}></Route>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/shop' element={<ShopPage />} />
+          <Route path='/checkout' element={<CheckoutPage />} />
           <Route
             path='/signin'
             element={
@@ -53,7 +55,7 @@ class App extends React.Component {
                 <SignInAndSignUpPage />
               )
             }
-          ></Route>
+          />
         </Routes>
       </div>
     );
