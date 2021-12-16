@@ -1,7 +1,7 @@
 import React from 'react';
 import './form-input.styles.scss';
 
-export const FormInput = ({ label, ...otherProps }) => (
+const FormInput = ({ label, ...otherProps }) => (
   <div className='group'>
     <input className='form-input' {...otherProps} />
     {!!label ? (
@@ -15,3 +15,5 @@ export const FormInput = ({ label, ...otherProps }) => (
     ) : null}
   </div>
 );
+
+export default FormInput;

@@ -1,11 +1,11 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react';
 import { auth, createUser } from '../../firebase/firebase.utils';
-import { CustomButton } from '../custom-button/custom-button.component';
-import { FormInput } from '../form-input/form-input.component';
+import CustomButton from '../custom-button/custom-button.component';
+import FormInput from '../form-input/form-input.component';
 import './sign-up.styles.scss';
 
-export class SignUp extends React.Component {
+class SignUp extends React.Component {
   constructor() {
     super();
 
@@ -102,3 +102,5 @@ export class SignUp extends React.Component {
     );
   }
 }
+
+export default SignUp;
