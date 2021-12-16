@@ -1,7 +1,7 @@
 import { onSnapshot } from 'firebase/firestore';
 import React from 'react';
 import { connect } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Header from './components/header/header-component';
 import { auth, createUser } from './firebase/firebase.utils';
 import HomePage from './pages/homepage/homepage.component';
@@ -42,15 +42,28 @@ class App extends React.Component {
         <Routes>
           <Route path='/' element={<HomePage />}></Route>
           <Route path='/shop' element={<ShopPage />}></Route>
-          <Route path='/signin' element={<SignInAndSignUpPage />}></Route>
+          <Route
+            path='/signin'
+            element={
+              !!this.props.currentUser ? (
+                <Navigate to='/' replace />
+              ) : (
+                <SignInAndSignUpPage />
+              )
+            }
+          ></Route>
         </Routes>
       </div>
     );
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
 const mapDispatchtoProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(null, mapDispatchtoProps)(App);
+export default connect(mapStateToProps, mapDispatchtoProps)(App);
