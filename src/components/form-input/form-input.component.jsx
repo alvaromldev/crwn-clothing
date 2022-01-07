@@ -1,19 +1,11 @@
 import React from 'react';
-import './form-input.styles.scss';
+import { FormInputContainer, Input, Label } from './form-input.styles';
 
 const FormInput = ({ label, ...otherProps }) => (
-  <div className='group'>
-    <input className='form-input' {...otherProps} />
-    {!!label ? (
-      <label
-        className={`${
-          otherProps.value.length ? 'shrink' : ''
-        } form-input-label`}
-      >
-        {label}
-      </label>
-    ) : null}
-  </div>
+  <FormInputContainer>
+    <Input {...otherProps} />
+    {!!label ? <Label {...otherProps}>{label}</Label> : null}
+  </FormInputContainer>
 );
 
 export default FormInput;

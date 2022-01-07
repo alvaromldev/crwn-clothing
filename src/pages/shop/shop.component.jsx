@@ -4,7 +4,7 @@ import CollectionsOverview from '../../components/collections-overview/collectio
 import CollectionPage from '../collection/collection.component';
 
 const ShopPage = () => (
-  <div className='shop-page'>
+  <div>
     <Routes>
       <Route path=':collectionId' element={<CollectionPage />} />
       <Route path='/' element={<CollectionsOverview />} />

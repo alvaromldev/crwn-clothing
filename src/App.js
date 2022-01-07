@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
-import Header from './components/header/header-component';
+import Header from './components/header/header.component';
 import { auth, createUser } from './firebase/firebase.utils';
 import CheckoutPage from './pages/checkout/checkout.component';
 import HomePage from './pages/homepage/homepage.component';
