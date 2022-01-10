@@ -18,6 +18,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const { handleSetCurrentUser } = this.props;
+
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (!!userAuth) {
         const userRef = await createUser(userAuth);
@@ -28,9 +29,8 @@ class App extends React.Component {
             ...snapshot.data(),
           });
         });
-      } else {
-        handleSetCurrentUser(userAuth);
       }
+      handleSetCurrentUser(userAuth);
     });
   }
 

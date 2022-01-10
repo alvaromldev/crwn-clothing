@@ -17,7 +17,7 @@ const CollectionItem = ({ item, handleAddItem }) => {
       <CollectionItemImage style={{ backgroundImage: `url(${imageUrl})` }} />
       <CollectionItemFooter>
         <ItemFooterName>{name}</ItemFooterName>
-        <ItemFooterPrice>{price}</ItemFooterPrice>
+        <ItemFooterPrice>{`$${price}`}</ItemFooterPrice>
       </CollectionItemFooter>
       <CollectionItemButton onClick={() => handleAddItem(item)} inverted>
         ADD TO CART
