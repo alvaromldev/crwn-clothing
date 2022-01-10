@@ -3,12 +3,12 @@ import CollectionItem from '../collection-item/collection-item.component';
 import {
   CollectionPreviewContainer,
   PreviewContainer,
-  Title,
+  TitleLink,
 } from './collection-preview.styles';
 
-const CollectionPreview = ({ title, items }) => (
+const CollectionPreview = ({ title, items, routeName }) => (
   <CollectionPreviewContainer>
-    <Title>{title.toUpperCase()}</Title>
+    <TitleLink to={`${routeName}`}>{title.toUpperCase()}</TitleLink>
     <PreviewContainer>
       {items
         .filter((_, index) => index < 4)
