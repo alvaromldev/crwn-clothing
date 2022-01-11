@@ -7,7 +7,7 @@ import App from './App';
 import './index.css';
 import { persistor, store } from './redux/store';
 import reportWebVitals from './reportWebVitals';
-import * as serviceWorker from './service-worker';
+import * as serviceWorker from './serviceWorkerRegistration';
 
 ReactDOM.render(
   <React.StrictMode>
