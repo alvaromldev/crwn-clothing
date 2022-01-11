@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addItem, clearItem, removeItem } from '../../redux/cart/cart.actions';
 import {
   CheckoutItemContainer,
@@ -11,13 +11,10 @@ import {
   CheckoutItemRemoveButton,
 } from './checkout-item.styles';
 
-const CheckoutItem = ({
-  cartItem,
-  handleClearItem,
-  handleAddItem,
-  handleRemoveItem,
-}) => {
+const CheckoutItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
+  const dispatch = useDispatch();
+
   return (
     <CheckoutItemContainer>
       <CheckoutItemImageContainer>
@@ -25,26 +22,22 @@ const CheckoutItem = ({
       </CheckoutItemImageContainer>
       <CheckoutItemDetail>{name}</CheckoutItemDetail>
       <CheckoutItemDetail>
-        <CheckoutItemQuantityArrow onClick={() => handleRemoveItem(cartItem)}>
+        <CheckoutItemQuantityArrow
+          onClick={() => dispatch(removeItem(cartItem))}
+        >
           &#10094;
         </CheckoutItemQuantityArrow>
         <CheckoutItemQuantityValue>{quantity}</CheckoutItemQuantityValue>
-        <CheckoutItemQuantityArrow onClick={() => handleAddItem(cartItem)}>
+        <CheckoutItemQuantityArrow onClick={() => dispatch(addItem(cartItem))}>
           &#10095;
         </CheckoutItemQuantityArrow>
       </CheckoutItemDetail>
       <CheckoutItemDetail>{price}</CheckoutItemDetail>
-      <CheckoutItemRemoveButton onClick={() => handleClearItem(cartItem)}>
+      <CheckoutItemRemoveButton onClick={() => dispatch(clearItem(cartItem))}>
         &#10005;
       </CheckoutItemRemoveButton>
     </CheckoutItemContainer>
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  handleClearItem: (item) => dispatch(clearItem(item)),
-  handleAddItem: (item) => dispatch(addItem(item)),
-  handleRemoveItem: (item) => dispatch(removeItem(item)),
-});
-
-export default connect(null, mapDispatchToProps)(CheckoutItem);
+export default CheckoutItem;

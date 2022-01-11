@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { createStructuredSelector } from 'reselect';
 import Header from './components/header/header.component';
 import CheckoutPage from './pages/checkout/checkout.component';
 import HomePage from './pages/homepage/homepage.component';
@@ -11,10 +10,13 @@ import { checkUserSession } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import './styles.scss';
 
-const App = ({ currentUser, handleCheckUserSession }) => {
+const App = () => {
+  const currentUser = useSelector(selectCurrentUser);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    handleCheckUserSession();
-  }, [handleCheckUserSession]);
+    dispatch(checkUserSession());
+  }, [dispatch]);
 
   return (
     <div>
@@ -38,12 +40,4 @@ const App = ({ currentUser, handleCheckUserSession }) => {
   );
 };
 
-const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  handleCheckUserSession: () => dispatch(checkUserSession()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

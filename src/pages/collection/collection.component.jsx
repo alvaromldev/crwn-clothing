@@ -12,6 +12,7 @@ import {
 const CollectionPage = () => {
   const { collectionId } = useParams();
   const { title, items } = useSelector(selectCollection(collectionId));
+
   return (
     <CollectionPageContainer>
       <CollectionTitle>{title}</CollectionTitle>
