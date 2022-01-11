@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -28,4 +31,5 @@ code {
 * {
   scrollbar-width: thin;
   scrollbar-color: #353535 transparent;
+  box-sizing: border-box;
 }
